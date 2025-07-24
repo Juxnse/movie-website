@@ -1,72 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Sen:wght@400;700;800&display=swap"
-    rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
-  <title>Detalle Película</title>
-</head>
+<div class="container">
+  <div class="content-container" style="text-align:center; padding: 40px;">
+    <h1 id="titulo"></h1>
+    <img id="imagen" style="width: 300px; border-radius: 15px; margin: 20px 0;">
+    <p id="descripcion" style="max-width: 600px; margin: auto; font-size: 16px; color: lightgray;"></p>
+    <p id="categoria" style="font-style: italic; color: #4dbf00; margin: 10px 0;"></p>
 
-<body>
-  <div class="navbar">
-    <div class="navbar-container">
-      <div class="logo-container">
-        <h1 class="logo">flakes</h1>
-      </div>
-      <div class="profile-container">
-        <img class="profile-picture" src="img/profile.jpg" alt="">
-        <div class="profile-text-container">
-          <span class="profile-text">Profile</span>
-        </div>
-      </div>
+    <div id="video-container" style="margin-top:20px;">
+      <video id="video-player" controls style="width:80%; max-width:800px; border-radius:10px;">
+        <source id="video-source" src="" type="video/mp4">
+        Tu navegador no soporta reproducción de video.
+      </video>
     </div>
+
+    <button onclick="window.location.href='index.html'" style="padding: 10px 20px; background:#4dbf00; color:white; border:none; border-radius:5px; cursor:pointer;">
+      Volver
+    </button>
   </div>
-
-  <div class="container">
-    <div class="content-container" style="text-align:center; padding: 40px;">
-      <h1 id="titulo"></h1>
-      <img id="imagen" style="width: 300px; border-radius: 15px; margin: 20px 0;">
-      <p id="descripcion" style="max-width: 600px; margin: auto; font-size: 16px; color: lightgray;"></p>
-      <p id="categoria" style="font-style: italic; color: #4dbf00; margin: 10px 0;"></p>
-      <button onclick="window.location.href='index.html'" style="padding: 10px 20px; background:#4dbf00; color:white; border:none; border-radius:5px; cursor:pointer;">
-        Volver
-      </button>
-    </div>
-  </div>
-
-  <script type="module">
-    import { supabase } from './supabase.js';
-
-    document.addEventListener('DOMContentLoaded', async () => {
-      const peliculaId = localStorage.getItem('peliculaId');
-      if (!peliculaId) {
-        window.location.href = 'index.html';
-        return;
-      }
-
-      // Consulta a Supabase
-      const { data, error } = await supabase
-        .from('peliculas')
-        .select('*')
-        .eq('id', peliculaId)
-        .single();
-
-      if (error || !data) {
-        alert('Error al cargar película');
-        window.location.href = 'index.html';
-        return;
-      }
-
-      // Mostrar datos en el HTML
-      document.getElementById('titulo').textContent = data.titulo;
-      document.getElementById('imagen').src = data.imagen;
-      document.getElementById('descripcion').textContent = data.descripcion;
-      document.getElementById('categoria').textContent = `Categoría: ${data.categoria}`;
-    });
-  </script>
-</body>
-</html>
+</div>

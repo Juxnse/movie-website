@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/style.css">
   <title>Login - Movie Website</title>
 </head>
 <body>
@@ -19,7 +19,6 @@
       </div>
     </div>
   </div>
-
   <div class="container">
     <div class="content-container" style="text-align:center; padding:50px;">
       <h1>Iniciar sesión</h1>
@@ -31,29 +30,6 @@
       <p>¿No tienes cuenta? <a href="register.html">Regístrate</a></p>
     </div>
   </div>
-
-  <script type="module">
-    import { supabase } from './supabase.js';
-
-    document.getElementById('loginForm').addEventListener('submit', async (e) => {
-      e.preventDefault();
-
-      const correo = e.target.correo.value;
-      const contraseña = e.target.contraseña.value;
-
-      const { data, error } = await supabase
-        .from('usuarios')
-        .select('*')
-        .eq('correo', correo)
-        .eq('contraseña', contraseña);
-
-      if (error || data.length === 0) {
-        alert('Correo o contraseña incorrectos');
-      } else {
-        localStorage.setItem('usuario', JSON.stringify(data[0]));
-        window.location.href = 'index.html';
-      }
-    });
-  </script>
+  <script type="module" src="js/login.js"></script>
 </body>
 </html>

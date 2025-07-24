@@ -1,18 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Sen:wght@400;700;800&display=swap"
-        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Sen:wght@400;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
     <title>Movie Website</title>
 </head>
-
 <body>
     <div class="navbar">
         <div class="navbar-container">
@@ -34,10 +30,7 @@
                     <span class="profile-text">Profile</span>
                     <i class="fas fa-caret-down"></i>
                 </div>
-
-                <!-- Botones de autenticación -->
                 <div class="auth-buttons" id="auth-buttons"></div>
-
                 <div class="toggle">
                     <i class="fas fa-moon toggle-icon"></i>
                     <i class="fas fa-sun toggle-icon"></i>
@@ -46,7 +39,6 @@
             </div>
         </div>
     </div>
-
     <div class="sidebar">
         <i class="left-menu-icon fas fa-search"></i>
         <i class="left-menu-icon fas fa-home"></i>
@@ -56,64 +48,22 @@
         <i class="left-menu-icon fas fa-hourglass-start"></i>
         <i class="left-menu-icon fas fa-shopping-cart"></i>
     </div>
-
     <div class="container">
         <div class="content-container">
-
-            <!-- Destacado -->
-            <div class="featured-content"
-                style="background: linear-gradient(to bottom, rgba(0,0,0,0), #151515), url('img/f-1.jpg');">
+            <div class="featured-content" style="background: linear-gradient(to bottom, rgba(0,0,0,0), #151515), url('img/f-1.jpg');">
                 <img class="featured-title" src="img/f-t-1.png" alt="">
                 <p class="featured-desc">Disfruta de los últimos estrenos y clásicos del cine en un solo lugar.</p>
                 <button class="featured-button">WATCH</button>
             </div>
-
-            <!-- Carrusel dinámico -->
             <div class="movie-list-container">
                 <h1 class="movie-list-title">Películas</h1>
                 <div class="movie-list-wrapper">
-                    <div class="movie-list">
-                        <!-- Aquí app.js insertará las películas dinámicamente -->
-                    </div>
+                    <div class="movie-list"></div>
                     <i class="fas fa-chevron-right arrow"></i>
                 </div>
             </div>
-
         </div>
     </div>
-
-    <!-- Importar Supabase y App.js -->
-    <script type="module" src="supabase.js"></script>
-    <script type="module" src="app.js"></script>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const usuario = JSON.parse(localStorage.getItem('usuario'));
-            const profileText = document.querySelector('.profile-text');
-            const authButtons = document.getElementById('auth-buttons');
-
-            if (usuario) {
-                // Usuario logueado: mostrar nombre y botón de cerrar sesión
-                profileText.textContent = usuario.nombre;
-
-                const logoutBtn = document.createElement('button');
-                logoutBtn.textContent = 'Cerrar sesión';
-                logoutBtn.classList.add('btn-logout');
-                logoutBtn.onclick = () => {
-                    localStorage.removeItem('usuario');
-                    window.location.href = 'index.html';
-                };
-                authButtons.appendChild(logoutBtn);
-            } else {
-                // Invitado: mostrar botones de Iniciar sesión y Registrarse
-                profileText.textContent = "Invitado";
-                authButtons.innerHTML = `
-                    <a href="login.html" class="btn-auth">Iniciar sesión</a>
-                    <a href="register.html" class="btn-auth">Registrarse</a>
-                `;
-            }
-        });
-    </script>
+    <script type="module" src="js/main.js"></script>
 </body>
-
 </html>

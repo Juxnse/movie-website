@@ -246,44 +246,41 @@ body {
 
 .navbar-container.active {
   background-color: white;
-
   color: black;
 }
 
-.sidebar.active{
-    background-color: white;
+.sidebar.active {
+  background-color: white;
 }
 
-.left-menu-icon.active{
-    color: black;
+.left-menu-icon.active {
+  color: black;
 }
 
-.toggle.active{
-    background-color: black;
+.toggle.active {
+  background-color: black;
 }
 
-.toggle-ball.active{
-    background-color: white;
-    transform: translateX(-20px);
+.toggle-ball.active {
+  background-color: white;
+  transform: translateX(-20px);
 }
 
-@media only screen and (max-width: 940px){
-    .menu-container{
-        display: none;
-    }
+@media only screen and (max-width: 940px) {
+  .menu-container {
+    display: none;
+  }
 }
 
-/* Contenedor de botones de sesión */
 .auth-buttons {
   display: flex;
   gap: 10px;
   margin-left: 15px;
 }
 
-/* Botones de login y registro */
 .btn-auth {
   text-decoration: none;
-  background-color: #4dbf00; /* verde del logo */
+  background-color: #4dbf00;
   color: white;
   padding: 6px 12px;
   border-radius: 5px;
@@ -296,9 +293,8 @@ body {
   background-color: #3a9400;
 }
 
-/* Botón cerrar sesión */
 .btn-logout {
-  background-color: #e63946; /* rojo */
+  background-color: #e63946;
   color: white;
   border: none;
   padding: 6px 12px;
