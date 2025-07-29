@@ -35,7 +35,6 @@ export function escucharCambiosPeliculas(callback) {
       'postgres_changes',
       { event: '*', schema: 'public', table: 'peliculas' },
       payload => {
-        console.log('Cambio detectado en películas:', payload);
         callback(); // Vuelve a renderizar cuando hay cambios
       }
     )
@@ -76,8 +75,6 @@ function createMovieCardTMDB(movie) {
     <span class="movie-list-item-title">${title || name}</span>
     <p class="movie-list-item-desc">Estreno: ${release_date}</p>
     <button class="movie-list-item-button" onclick="mostrarModal(${movie.id})">Details</button>
-
-
   `;
 
   return card;
@@ -110,6 +107,7 @@ function createMovieCardSupabase(movie) {
     <span class="movie-list-item-title">${movie.titulo}</span>
     <p class="movie-list-item-desc">${movie.descripcion}</p>
     <button class="movie-list-item-button" onclick="mostrarModal(${movie.id})">Details</button>
+    <button class="movie-list-item-button" onclick="">Trailer</button>
   `;
 
   return card;

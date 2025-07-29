@@ -1,6 +1,28 @@
 import { renderPeliculas, actualizarNavbar } from './ui.js';
 import { escucharCambiosPeliculas } from './peliculas.js';
 import { inicializarToggle } from './toggle.js';
+import { environment } from './environment.js';
+
+const options = {
+  method: 'GET',
+  headers: {
+    accept: 'application/json',
+    Authorization: environment.apikey // Ya incluye Bearer
+  }
+};
+
+async function obtenerTrailer(movieId) {
+    try {
+        const response = await fetch(`https://api.themoviedb.org/3/movie/${movieId}/videos?language=en-US`, options);
+        const data = await response.json();
+        const trailerkey = data.results[0]?.key;
+
+      return trailerkey || null;
+    } catch (error) {
+        console.error('Error obteniendo el tráiler:', error);
+        return null;
+    }
+}
 
 /* Guardar ID de película para detalle */
 window.verDetalle = (id) => {
@@ -32,11 +54,11 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 // Función para mostrar modal con detalles de la película
-window.mostrarModal = function (id) {
+window.mostrarModal = async function (id) {
   const movie = window.tmdbPeliculas.find(m => m.id === id);
+  const trailerKey = await obtenerTrailer(id);  
   const modal = document.getElementById('modal');
   const content = document.getElementById('modal-content');
-  console.log("Abriendo modal para ID:", id);
 
   if (!movie) {
     content.innerHTML = `<p>No se encontró la película.</p>`;
@@ -52,9 +74,16 @@ window.mostrarModal = function (id) {
     <p><strong>Promedio de votos:</strong> ${movie.vote_average}</p>
     <p><strong>Descripción:</strong> ${movie.overview}</p>
     <button onclick="cerrarModal()">Cerrar</button>
+    <button onclick="verTrailer('${trailerKey}')">Ver tráiler</button>
+    
   `;
   modal.classList.remove('hide');
   modal.classList.add('show');
+};
+
+window.verTrailer = function (trailerKey) {
+  const url = `https://www.youtube.com/watch?v=${trailerKey}`;
+  window.open(url, '_blank');
 };
 
 // Función para cerrar el modal
