@@ -9,12 +9,9 @@ const options = {
 };
 
 const container = document.getElementById('movie-detail');
-
-// Obtener el ID desde la URL
 const params = new URLSearchParams(window.location.search);
 const movieId = params.get('id');
 
-// Función autoinvocada
 (async function cargarDetalle() {
   if (!movieId) {
     container.innerHTML = '<p>No se encontró la película.</p>';
@@ -41,12 +38,11 @@ const movieId = params.get('id');
     mostrarDetalle(pelicula);
 
   } catch (error) {
-    container.innerHTML = `<p>Error cargando detalles.</p>`;
+    container.innerHTML = '<p>Error cargando detalles.</p>';
     console.error('Error en fetch:', error);
   }
 })();
 
-// Mostrar detalle
 function mostrarDetalle(movie) {
   container.innerHTML = `
     <h1>${movie.title}</h1>
@@ -54,6 +50,6 @@ function mostrarDetalle(movie) {
     <p><strong>Fecha de estreno:</strong> ${movie.release_date}</p>
     <p><strong>Promedio de votos:</strong> ${movie.vote_average}</p>
     <p><strong>Descripción:</strong> ${movie.overview}</p>
-    <a href="index.html">← Volver al inicio</a>
+    <a href="index.html" class="btn-auth">← Volver al inicio</a>
   `;
 }
