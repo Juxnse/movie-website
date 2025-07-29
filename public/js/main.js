@@ -30,3 +30,38 @@ document.addEventListener('DOMContentLoaded', async () => {
   // Activar modo oscuro/claro
   inicializarToggle();
 });
+
+// Función para mostrar modal con detalles de la película
+window.mostrarModal = function (id) {
+  const movie = window.tmdbPeliculas.find(m => m.id === id);
+  const modal = document.getElementById('modal');
+  const content = document.getElementById('modal-content');
+  console.log("Abriendo modal para ID:", id);
+
+  if (!movie) {
+    content.innerHTML = `<p>No se encontró la película.</p>`;
+    modal.classList.remove('hide');
+    modal.classList.add('show');
+    return;
+  }
+
+  content.innerHTML = `
+    <h2>${movie.title}</h2>
+    <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}" />
+    <p><strong>Fecha de estreno:</strong> ${movie.release_date}</p>
+    <p><strong>Promedio de votos:</strong> ${movie.vote_average}</p>
+    <p><strong>Descripción:</strong> ${movie.overview}</p>
+    <button onclick="cerrarModal()">Cerrar</button>
+  `;
+  modal.classList.remove('hide');
+  modal.classList.add('show');
+};
+
+// Función para cerrar el modal
+window.cerrarModal = function () {
+  const modal = document.querySelector('.modal');
+  modal.classList.remove('show');
+  modal.classList.add('hide');
+
+};
+
