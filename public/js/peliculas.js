@@ -4,6 +4,8 @@ import { supabase } from './supabase.js';
 const tmdbContainer = document.getElementById('tmdb-list');
 const supabaseContainer = document.getElementById('supabase-list');
 
+window.tmdbPeliculas = [];
+
 const options = {
   method: 'GET',
   headers: {
@@ -53,6 +55,8 @@ async function fetchMoviesTMDB() {
       return;
     }
 
+    window.tmdbPeliculas = data.results;
+
     data.results.forEach(movie => {
       const card = createMovieCardTMDB(movie);
       tmdbContainer.appendChild(card);
@@ -71,7 +75,9 @@ function createMovieCardTMDB(movie) {
     <img class="movie-list-item-img" src="${backdrop_path ? `https://image.tmdb.org/t/p/w500${backdrop_path}` : 'img/placeholder.jpg'}" alt="${title}">
     <span class="movie-list-item-title">${title || name}</span>
     <p class="movie-list-item-desc">Estreno: ${release_date}</p>
-    <button class="movie-list-item-button">Watch</button>
+    <button class="movie-list-item-button" onclick="mostrarModal(${movie.id})">Details</button>
+
+
   `;
 
   return card;
@@ -103,7 +109,7 @@ function createMovieCardSupabase(movie) {
     <img class="movie-list-item-img" src="${movie.imagen}" alt="${movie.titulo}">
     <span class="movie-list-item-title">${movie.titulo}</span>
     <p class="movie-list-item-desc">${movie.descripcion}</p>
-    <button class="movie-list-item-button">Watch</button>
+    <button class="movie-list-item-button" onclick="mostrarModal(${movie.id})">Details</button>
   `;
 
   return card;

@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Sen:wght@400;700;800&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Sen:wght@400;700;800&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
     <title>Movie Website</title>
 </head>
+
 <body>
     <div class="navbar">
         <div class="navbar-container">
@@ -54,7 +58,8 @@
         <div class="content-container">
 
             <!-- Destacado -->
-            <div class="featured-content" style="background: linear-gradient(to bottom, rgba(0,0,0,0), #151515), url('img/f-1.jpg');">
+            <div class="featured-content"
+                style="background: linear-gradient(to bottom, rgba(0,0,0,0), #151515), url('img/f-1.jpg');">
                 <img class="featured-title" src="img/f-t-1.png" alt="">
                 <p class="featured-desc">Disfruta de los últimos estrenos y clásicos del cine en un solo lugar.</p>
                 <button class="featured-button">DETAILS</button>
@@ -81,9 +86,14 @@
         </div>
     </div>
 
+    <div id="modal" class="modal hidden">
+        <div class="modal-content" id="modal-content"></div>
+    </div>
+
     <!-- Script -->
     <script type="module" src="js/peliculas.js"></script>
     <script type="module" src="js/main.js"></script>
 
 </body>
+
 </html>
