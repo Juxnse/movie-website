@@ -15,13 +15,15 @@ export function escucharCambiosPeliculas(callback) {
     .subscribe();
 }  */
 
+import { environment } from '../../environment.js';
+
 const moviesContainer = document.getElementById('movies');
 
 const options = {
   method: 'GET',
   headers: {
     accept: 'application/json',
-    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxOTI0ZmIyOWFkMTc3ODBlYWE1NGQwMWEzYzMyMGUxNCIsIm5iZiI6MTc1Mzc0MTcxMi4yOTYsInN1YiI6IjY4ODdmOTkwYjQ1YjNmYTQ4NTE2Y2I2YyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.AGZQLeTeshWZ5gi7AKg4U_BW5Rxop8TS6uyULcHR4yY'
+    Authorization: environment.apikey
   }
 };
 
