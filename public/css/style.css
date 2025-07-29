@@ -308,3 +308,37 @@ body {
 .btn-logout:hover {
   background-color: #b3242e;
 }
+
+.card {
+  background-color: #b3242e;
+}
+
+#movies{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.movie-item {
+  margin: 1rem;
+  text-align: center;
+  background-color: #333;
+  color: white;
+  max-width: 500px;
+  font-size: 25px;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.title {
+  padding-top: 16px;
+}
+
+.movie-item:hover {
+  transform: scale(1.05);
+}
+
+.movie_img_rounded {
+  border-radius: 0.5rem;
+}
