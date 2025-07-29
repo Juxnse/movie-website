@@ -9,14 +9,11 @@ const options = {
 };
 
 const container = document.getElementById('movie-detail');
-
-// Obtener el ID desde la URL
 const params = new URLSearchParams(window.location.search);
 const movieId = params.get('id');
 
 // Función para obtener el tráiler de una película
 
-// Función autoinvocada
 (async function cargarDetalle() {
     if (!movieId) {
         container.innerHTML = '<p>No se encontró la película.</p>';
@@ -41,20 +38,20 @@ const movieId = params.get('id');
         }
         mostrarDetalle(pelicula);
 
-    } catch (error) {
-        container.innerHTML = `<p>Error cargando detalles.</p>`;
-        console.error('Error en fetch:', error);
-    }
+  } catch (error) {
+    container.innerHTML = '<p>Error cargando detalles.</p>';
+    console.error('Error en fetch:', error);
+  }
 })();
 
 // Mostrar detalle
-async function mostrarDetalle(movie) {
-    container.innerHTML = `
+function mostrarDetalle(movie) {
+  container.innerHTML = `
     <h1>${movie.title}</h1>
     <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}" />
     <p><strong>Fecha de estreno:</strong> ${movie.release_date}</p>
     <p><strong>Promedio de votos:</strong> ${movie.vote_average}</p>
     <p><strong>Descripción:</strong> ${movie.overview}</p>
-    <a href="index.html">← Volver al inicio</a>
+    <a href="index.html" class="btn-auth">← Volver al inicio</a>
   `;
 }
