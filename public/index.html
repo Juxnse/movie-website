@@ -39,6 +39,7 @@
             </div>
         </div>
     </div>
+
     <div class="sidebar">
         <i class="left-menu-icon fas fa-search"></i>
         <i class="left-menu-icon fas fa-home"></i>
@@ -48,22 +49,41 @@
         <i class="left-menu-icon fas fa-hourglass-start"></i>
         <i class="left-menu-icon fas fa-shopping-cart"></i>
     </div>
+
     <div class="container">
         <div class="content-container">
+
+            <!-- Destacado -->
             <div class="featured-content" style="background: linear-gradient(to bottom, rgba(0,0,0,0), #151515), url('img/f-1.jpg');">
                 <img class="featured-title" src="img/f-t-1.png" alt="">
                 <p class="featured-desc">Disfruta de los últimos estrenos y clásicos del cine en un solo lugar.</p>
                 <button class="featured-button">WATCH</button>
             </div>
+
+            <!-- Carrusel TMDB -->
             <div class="movie-list-container">
-                <h1 class="movie-list-title">Películas</h1>
+                <h1 class="movie-list-title">Películas Populares</h1>
                 <div class="movie-list-wrapper">
-                    <div class="movie-list"></div>
+                    <div class="movie-list" id="tmdb-list"></div>
                     <i class="fas fa-chevron-right arrow"></i>
                 </div>
             </div>
+
+            <!-- Carrusel Supabase -->
+            <div class="movie-list-container">
+                <h1 class="movie-list-title">Películas de la Plataforma</h1>
+                <div class="movie-list-wrapper">
+                    <div class="movie-list" id="supabase-list"></div>
+                    <i class="fas fa-chevron-right arrow"></i>
+                </div>
+            </div>
+
         </div>
     </div>
+
+    <!-- Script -->
+    <script type="module" src="js/peliculas.js"></script>
     <script type="module" src="js/main.js"></script>
+
 </body>
 </html>
